@@ -1,0 +1,237 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Create/Update Enquiry</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo"><strong>Mittul</strong></a>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="landing.html">Landing</a></li>
+							<li><a href="generic.html">Generic</a></li>
+                            <li><a href="elements.html">Elements</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main" class="alt">
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major">
+										<h1>Create/Update Enquiry</h1>
+									</header>
+                                    <span class="image main"><a href="#"><img src="images/freelance1.png" alt="" /></a></span>
+                                    <h2 id="content">User Story</h2>
+                                    <p>
+                                        Enquiry is created by buyer.
+                                        This page will also be used for updating enquiry.
+                                        Enquiry will have multiple products (will be called Enquired Product for reference) listed in it.
+                                        Enquired Products listed in enquiry should have separate table than the products created by sellers.
+                                        Each enquiry can be allocated to a Project.
+                                        While creating enquiry, project name and Project No/Work Order No. will be added by user.
+                                        If the project exists (check existence of project by project name and project number for that organization), saving enquiry will map the new enquiry to existing project.
+                                        If project does not exist, a new project will be created for the organization and the enquiry will be mapped to it.
+                                    </p>
+                                    <img src="images/create-enquiry1.png" alt="" />
+                                    <h4>When New enquiry page loads</h4>
+                                    <ul>
+                                        <li>Load enquiry number from backend.</li>
+                                        <li>Enquiry number field should be visible only when user is on this page to update enquiry.</li>
+                                    </ul>
+                                    <h4>Functioning of UI</h4>
+                                    <ul>
+                                        <li>Enquiry number should always be un-editable.</li>
+                                        <li>Add product button will add new row to add product.</li>
+                                        <li>Sr. No. will be auto generated from starting from 1.</li>
+                                        <li>Delete icon will be present for each row. Clicking on it will delete that row.</li>
+                                        <li>Unit of measurement column will have dropdown to select unit for each row.</li>
+                                        <li>Delivery date will be a date selector (you can use date selector provided by nebular library).</li>
+                                        <li>How to select location?
+                                            <ol>
+                                                <li>To select district - Select state and then select corresponding district to create a pair</li>
+                                                <li>To select whole state - Select only State</li>
+                                                <li>Step 1/2 can be repeated multiple times to create more combinations of state and corresponding districts.</li>
+                                            </ol>
+                                        </li>
+                                        <li>
+                                            How to unselect a State district pair?
+                                            <ul>
+                                                <li>Click on cross icon on the pair of state district.</li>
+                                            </ul>
+                                        </li>
+                                        <li>Save Button will be have text showing "save" if new enquiry is being created.</li>
+                                        <li>Save Button will have text "Update" if existing enquiry is being updated.</li>
+                                        <li>Reset button will delete all rows in table and reset other existing fields except Enquiry No field.</li>
+                                    </ul>
+                                    <h4>Validators</h4>
+                                    <ul>
+                                        <li>Project name - alphanumeric(text) - (Compulsory) - min 3, max 30 char</li>
+                                        <li>Project No - alphanumeric(text) - (Compulsory) - min 1, max 20 char</li>
+                                        <li>Product Description - alphanumeric(text) - (Compulsory) - min 3, max 100 char</li>
+                                        <li>Material Grade - alphanumeric(text) - (Optional) - min 1, max 20 char</li>
+                                        <li>Brand - alphanumeric(text) - (Optional) - min 2, max 20 char</li>
+                                        <li>Remark - alphanumeric(text) - (Compulsory) - min 10, max 100 char</li>
+                                        <li>Delivery Date will be date. (Compulsory)</li>
+                                        <li>Unit of measurement will be dropdown. (Compulsory)</li>
+                                        <li>Required Qty - numeric - (Compulsory) - min 1, max 10</li>
+                                        <li>State
+                                            <ul>
+                                                <li>Optional</li>
+                                                <li>Required to select district</li>
+                                            </ul>
+                                        </li>
+                                        <li>District
+                                            <ul>
+                                                <li>Optional (no matter state is selected or not).</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <h4>On Click of Save Button</h4>
+                                    <ul>
+                                        <li>If Enquiry No was empty (means new enquiry)
+                                            <ul>
+                                                <li>Create Project if not present</li>
+                                                <li>Create Enquiry</li>
+                                                <li>if enquiry is created successfully</li>
+                                                <ul>
+                                                    <li>send email and notification(on ui) to all sellers who has the products listed in enquiry.</li>
+                                                    <li>To find the sellers who has the product
+                                                        <ul>
+                                                            <li>Find by text search on product name and product description.</li>
+                                                            <li>Filter seller by location specified in enquiry and the location of seller.</li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                                <li>if enquiry creation fails
+                                                    <ul>
+                                                        <li>show error message in toastr ("Failed to create Enquiry. Please try again")</li>
+                                                        <li>User should be allowed to again save the enquiry with all form fields intact.</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>If Enquiry No is present (Means udpate call for enquiry)
+                                            <ul>
+                                                <li>Create Project if not present</li>
+                                                <li>Update Enquiry</li>
+                                                <li>if enquiry is updated successfully
+                                                    <ul>
+                                                        <li>send email and notification(on ui) to all sellers who has the products listed in enquiry.</li>
+                                                        <li>To find the sellers who has the product
+                                                            <ul>
+                                                                <li>Find by text search on product name and product description.</li>
+                                                                <li>Filter seller by location specified in enquiry and the location of seller.</li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>if enquiry updation fails
+                                                    <li>show error message in toastr ("Failed to update Enquiry. Please try again")</li>
+                                                    <li>User should be allowed to again save the enquiry with all form fields intact.</li>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+									</div>
+							</section>
+
+					</div>
+
+				<!-- Contact -->
+                <section id="contact">
+                    <div class="inner">
+                        <section>
+                            <form method="post" action="#">
+                                <div class="fields">
+                                    <div class="field half">
+                                        <label for="name">Name</label>
+                                        <input type="text" name="name" id="name" />
+                                    </div>
+                                    <div class="field half">
+                                        <label for="email">Email</label>
+                                        <input type="text" name="email" id="email" />
+                                    </div>
+                                    <div class="field">
+                                        <label for="message">Message</label>
+                                        <textarea name="message" id="message" rows="6"></textarea>
+                                    </div>
+                                </div>
+                                <ul class="actions">
+                                    <li><input type="submit" value="Send Message" class="primary" /></li>
+                                    <li><input type="reset" value="Clear" /></li>
+                                </ul>
+                            </form>
+                        </section>
+                        <section class="split">
+                            <section>
+                                <div class="contact-method">
+                                    <span class="icon solid alt fa-envelope"></span>
+                                    <h3>Email</h3>
+                                    <a href="#">conanmittul@gmail.com</a>
+                                </div>
+                            </section>
+                            <section>
+                                <div class="contact-method">
+                                    <span class="icon solid alt fa-phone"></span>
+                                    <h3>Phone</h3>
+                                    <span>+91 9210004959</span>
+                                </div>
+                            </section>
+                            <section>
+                                <div class="contact-method">
+                                    <span class="icon solid alt fa-home"></span>
+                                    <h3>Address</h3>
+                                    <span>New Delhi - 110008<br />
+                                        Delhi<br />
+                                        INDIA</span>
+                                </div>
+                            </section>
+                        </section>
+                    </div>
+                </section>
+ 
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="https://github.com/mittulmandhan" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								<li><a href="https://www.linkedin.com/in/mittul-mandhan-4a9437130/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							</ul>
+							<ul class="copyright">
+								<li>Maintained By</li><li>Mittul Mandhan</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

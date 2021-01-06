@@ -1,0 +1,223 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Bulk Upload Enquiry</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo"><strong>Mittul</strong></a>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="landing.html">Landing</a></li>
+							<li><a href="generic.html">Generic</a></li>
+                            <li><a href="elements.html">Elements</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main" class="alt">
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major">
+										<h1>Bulk Upload Enquiry</h1>
+									</header>
+                                    <span class="image main"><a href="#"><img src="images/freelance2.jpg" alt="" /></a></span>
+                                    <h2 id="content">User Story</h2>
+                                    <p>
+                                        Bulk upload of enquiry will be a new page.
+                                        Navigation link in NavBar for this page will have name - "Upload All Enquiry".
+                                        User should be able to download format of excel from this page.
+                                        User should be able to upload excel sheet containing multiple enquiries.
+                                    </p>
+                                    <img src="images/bulk-upload-enquiry1.png" alt="" />
+                                    <h4>Functioning of UI</h4>
+                                    <ul>
+                                        <li>"Download Excel Format" button will be used to download excel format template of enquiries.</li>
+                                        <li>On hovering over "Download Excel Format" button, a tooltip should be displayed with message "Download excel format of enquires".</li>
+                                        <li>Upload button should upload a excel file from client's machine to webpage.</li>
+                                        <li>How to select location?
+                                            <ol>
+                                                <li>To select district - Select state and then select corresponding district to create a pair</li>
+                                                <li>To select whole state - Select only State</li>
+                                                <li>Step 1/2 can be repeated multiple times to create more combinations of state and corresponding districts.</li>
+                                            </ol>
+                                        </li>
+                                        <li>How to unselect a State district pair?
+                                            <ul>
+                                                <li>Click on cross icon on the pair of state district.</li>
+                                            </ul>
+                                        </li>
+                                        <li>Submit button should be enabled only when all validations are passed.</li>
+                                        <li>Reset button will reset all fields in form.</li>
+                                    </ul>
+                                    <h4>Validations</h4>
+                                    <ul>
+                                        <li>Upload should only upload excel files. Check different extensions of excel file for this purpose.</li>
+                                        <li>Upload should be allowed for only one file at a time.</li>
+                                        <li>State
+                                            <ul>
+                                                <li>Optional</li>
+                                                <li>Required to select district</li>
+                                            </ul>
+                                        </li>
+                                        <li>District
+                                            <ul>
+                                                <li>Optional (no matter state is selected or not).</li>
+                                            </ul>
+                                        </li>
+                                        <li>Remark - alphanumeric(text) - (Compulsory) - min 10, max 100 char</li>
+                                    </ul>
+                                    <h4>On Click of Save Button</h4>
+                                    <ul>
+                                        <li>If excel file is valid and all fields in it are also valid.
+                                            <ul>
+                                                <li>Create Project if not present</li>
+                                                <li>Create Enquiry</li>
+                                                <li> if enquiry is created successfully</li>
+                                                <li>send email and notification(on ui) to all sellers who has the products listed in enquiry.</li>
+                                                <li>To find the sellers who has the product</li>
+                                                <li>Find by text search on product name and product description.</li>
+                                                <li>Filter seller by location specified in enquiry and the location of seller.</li>
+                                                <li>if enquiry creation fails
+                                                    <ul>
+                                                        <li>show error message in toastr ("Failed to create Enquiry. Please try again")</li>
+                                                        <li>User should be allowed to again save the enquiry with all form fields intact.</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>If Enquiry No was empty (means new enquiry)
+                                            <ul>
+                                                <li>Create Project if not present</li>
+                                                <li>Create Enquiry</li>
+                                                <li>if enquiry is created successfully
+                                                    <ul>
+                                                        <li>send email and notification(on ui) to all sellers who has the products listed in enquiry.</li>
+                                                        <li>To find the sellers who has the product
+                                                            <ul>
+                                                                <li>Find by text search on product name and product description.</li>
+                                                                <li>Filter seller by location specified in enquiry and the location of seller.</li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>if enquiry creation fails
+                                                    <ul>
+                                                        <li>If excel format is not correct
+                                                            <ul>
+                                                                <li>show error message in toastr ("Failed to create Enquiry. Excel is not correct")</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>if failed due to backend issue
+                                                            <ul>
+                                                                <li>show error message in toastr ("Failed to create Enquiry due to temporary issue. Please try again later.")</li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>User should be allowed to again save the enquiry with all form fields intact.</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+								</div>
+							</section>
+
+					</div>
+
+				<!-- Contact -->
+                <section id="contact">
+                    <div class="inner">
+                        <section>
+                            <form method="post" action="#">
+                                <div class="fields">
+                                    <div class="field half">
+                                        <label for="name">Name</label>
+                                        <input type="text" name="name" id="name" />
+                                    </div>
+                                    <div class="field half">
+                                        <label for="email">Email</label>
+                                        <input type="text" name="email" id="email" />
+                                    </div>
+                                    <div class="field">
+                                        <label for="message">Message</label>
+                                        <textarea name="message" id="message" rows="6"></textarea>
+                                    </div>
+                                </div>
+                                <ul class="actions">
+                                    <li><input type="submit" value="Send Message" class="primary" /></li>
+                                    <li><input type="reset" value="Clear" /></li>
+                                </ul>
+                            </form>
+                        </section>
+                        <section class="split">
+                            <section>
+                                <div class="contact-method">
+                                    <span class="icon solid alt fa-envelope"></span>
+                                    <h3>Email</h3>
+                                    <a href="#">conanmittul@gmail.com</a>
+                                </div>
+                            </section>
+                            <section>
+                                <div class="contact-method">
+                                    <span class="icon solid alt fa-phone"></span>
+                                    <h3>Phone</h3>
+                                    <span>+91 9210004959</span>
+                                </div>
+                            </section>
+                            <section>
+                                <div class="contact-method">
+                                    <span class="icon solid alt fa-home"></span>
+                                    <h3>Address</h3>
+                                    <span>New Delhi - 110008<br />
+                                        Delhi<br />
+                                        INDIA</span>
+                                </div>
+                            </section>
+                        </section>
+                    </div>
+                </section>
+ 
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="https://github.com/mittulmandhan" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								<li><a href="https://www.linkedin.com/in/mittul-mandhan-4a9437130/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							</ul>
+							<ul class="copyright">
+								<li>Maintained By</li><li>Mittul Mandhan</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
